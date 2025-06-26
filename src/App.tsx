@@ -1,12 +1,14 @@
 import { Button } from "antd";
-import UserList from "./components/UserList";
+import ProductList from "./components/ProductList";
 
 function App() {
   return (
     <div style={{ padding: "20px" }}>
-      <h1>My React App</h1>
-      <Button type="primary">Click me</Button>
-      <UserList />
+      <h1>Product Management</h1>
+      <Button type="primary" style={{ marginBottom: "16px" }}>
+        Add Product
+      </Button>
+      <ProductList />
     </div>
   );
 }
