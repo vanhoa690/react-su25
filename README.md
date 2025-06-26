@@ -1,54 +1,135 @@
-# React + TypeScript + Vite
+# Lập trình Front-End Framework 2 - WEB2091
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Hướng dẫn cài đặt dự án Vite + React + TypeScript
 
-Currently, two official plugins are available:
+## Giới thiệu
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Đây là hướng dẫn để tạo và chạy một ứng dụng React cơ bản sử dụng Vite làm công cụ build và TypeScript để đảm bảo type safety. Dự án được quản lý gói bằng `pnpm`, một công cụ nhanh và hiệu quả.
 
-## Expanding the ESLint configuration
+### Các thành phần chính trong dự án
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **`src/`**: Thư mục chứa mã nguồn của ứng dụng.
+  - `App.tsx`: Thành phần chính của ứng dụng React, nơi bạn định nghĩa giao diện người dùng.
+  - `main.tsx`: Điểm vào chính, nơi ứng dụng được render vào DOM.
+  - `index.css`: File CSS toàn cục cho kiểu dáng ứng dụng.
+  - `vite-env.d.ts`: File định nghĩa các biến môi trường của Vite.
+- **`public/`**: Thư mục chứa các tài nguyên tĩnh như favicon, hình ảnh, v.v.
+- **`vite.config.ts`**: File cấu hình Vite, cho phép tùy chỉnh các plugin và cài đặt build.
+- **`tsconfig.json`**: File cấu hình TypeScript, định nghĩa các quy tắc biên dịch.
+- **`package.json`**: File chứa thông tin dự án và các dependencies.
+- **`pnpm-lock.yaml`**: File khóa phiên bản các gói, đảm bảo cài đặt nhất quán.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Yêu cầu
+
+- Node.js (phiên bản 16 hoặc cao hơn)
+- `pnpm` (phiên bản mới nhất)
+
+## Hướng dẫn cài đặt
+
+### 1. Cài đặt `pnpm`
+
+Nếu chưa cài `pnpm`, bạn có thể cài đặt thông qua lệnh:
+
+```bash
+npm install -g pnpm
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Tạo dự án mới
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Chạy lệnh sau để tạo một dự án Vite với template React và TypeScript:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+pnpm create vite my-react-app --template react-ts
 ```
+
+- `my-react-app`: Tên thư mục dự án của bạn.
+- `--template react-ts`: Sử dụng template React với TypeScript.
+
+### 3. Di chuyển vào thư mục dự án
+
+```bash
+cd my-react-app
+```
+
+### 4. Cài đặt dependencies
+
+Cài đặt các gói cần thiết bằng `pnpm`:
+
+```bash
+pnpm install
+```
+
+### 5. Chạy dự án
+
+Khởi động server phát triển:
+
+```bash
+pnpm dev
+```
+
+Mở trình duyệt và truy cập `http://localhost:5173` để xem ứng dụng.
+
+### 6. Build dự án
+
+Để build ứng dụng cho production:
+
+```bash
+pnpm build
+```
+
+Kết quả sẽ nằm trong thư mục `dist`.
+
+### 7. Xem trước build production
+
+Để kiểm tra build production:
+
+```bash
+pnpm preview
+```
+
+## Cấu trúc dự án
+
+Dưới đây là cấu trúc cơ bản của dự án:
+
+```
+my-react-app/
+├── node_modules/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   ├── App.tsx
+│   ├── main.tsx
+│   ├── index.css
+│   └── vite-env.d.ts
+├── .gitignore
+├── index.html
+├── package.json
+├── pnpm-lock.yaml
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
+
+## Lệnh hữu ích
+
+- `pnpm dev`: Chạy server phát triển.
+- `pnpm build`: Build ứng dụng cho production.
+- `pnpm preview`: Xem trước build production.
+- `pnpm add <package>`: Cài đặt thêm gói (ví dụ: `pnpm add axios`).
+- `pnpm remove <package>`: Gỡ gói.
+
+## Tùy chỉnh
+
+- **Thêm thư viện**: Sử dụng `pnpm add <package>` để thêm các thư viện như `react-router-dom`, `axios`, hoặc `tailwindcss`.
+- **Cấu hình Vite**: Chỉnh sửa `vite.config.ts` để thêm các plugin hoặc tùy chỉnh build.
+- **TypeScript**: Tùy chỉnh `tsconfig.json` để thay đổi các quy tắc biên dịch TypeScript.
+
+## Tài nguyên bổ sung
+
+- [Tài liệu Vite](https://vitejs.dev/)
+- [Tài liệu React](https://react.dev/)
+- [Tài liệu TypeScript](https://www.typescriptlang.org/)
+- [Tài liệu pnpm](https://pnpm.io/)
+
+Chúc bạn thành công với dự án React của mình!
