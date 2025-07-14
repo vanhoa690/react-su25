@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+body {
+  background-color: #f0f2f5;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}

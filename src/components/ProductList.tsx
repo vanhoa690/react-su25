@@ -1,66 +1,93 @@
-import { useState } from "react";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Table, Button, Spin } from "antd";
+import { Table, Button, Alert } from "antd";
+import axios from "axios";
 
-type Product = {
+// Định nghĩa interface cho sản phẩm
+interface Product {
   id: number;
   name: string;
   price: number;
-};
-
-async function fetchProducts(): Promise<Product[]> {
-  const response = await fetch("http://localhost:3001/products");
-  return response.json();
+  description: string;
 }
 
-function ProductList() {
-  const [page, setPage] = useState(1);
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["products", page],
-    queryFn: fetchProducts,
+// Hàm gọi API để lấy danh sách sản phẩm
+const fetchProducts = async (): Promise<Product[]> => {
+  const { data } = await axios.get("http://localhost:3001/products");
+  return data;
+};
+
+const ProductList: React.FC = () => {
+  // Sử dụng useQuery để lấy dữ liệu
+  const {
+    data: products,
+    isLoading,
+    error,
+    refetch,
+  } = useQuery({
+    queryKey: ["products"], // Khóa duy nhất cho truy vấn
+    queryFn: fetchProducts, // Hàm lấy dữ liệu
   });
 
+  // Cấu hình cột cho bảng AntD
   const columns = [
     {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      // sorter: (a: Product, b: Product) => a.id - b.id, // Sắp xếp theo ID
     },
     {
-      title: "Name",
+      title: "Tên sản phẩm",
       dataIndex: "name",
       key: "name",
+      // sorter: (a: Product, b: Product) => a.name.localeCompare(b.name), // Sắp xếp theo tên
     },
     {
-      title: "Price",
+      title: "Giá",
       dataIndex: "price",
       key: "price",
-      render: (price: number) => `$${price}`,
+      sorter: (a: Product, b: Product) => a.price - b.price, // Sắp xếp theo giá
+    },
+    {
+      title: "Mô tả",
+      dataIndex: "description",
+      key: "description",
     },
   ];
 
+  // Xử lý lỗi
+  if (error) {
+    return (
+      <Alert
+        message="Lỗi"
+        description="Không thể tải dữ liệu. Vui lòng thử lại!"
+        type="error"
+        showIcon
+      />
+    );
+  }
+
   return (
     <div>
-      {isLoading && <Spin />}
-      {error && <p>Error: {error.message}</p>}
-      {!isLoading && !error && (
-        <>
-          <Table
-            dataSource={data}
-            columns={columns}
-            rowKey="id"
-            pagination={false}
-          />
-          <Button
-            onClick={() => setPage((prev) => prev + 1)}
-            style={{ marginTop: "16px" }}
-          >
-            Load More
-          </Button>
-        </>
-      )}
+      <h2>Danh sách sản phẩm</h2>
+      <Button
+        type="primary"
+        onClick={() => refetch()}
+        style={{ marginBottom: 16 }}
+        disabled={isLoading}
+      >
+        Làm mới dữ liệu
+      </Button>
+      <Table
+        dataSource={products}
+        columns={columns}
+        rowKey="id"
+        loading={isLoading} // Hiển thị spinner khi đang tải
+        pagination={{ pageSize: 5 }} // Phân trang, mỗi trang 5 bản ghi
+      />
     </div>
   );
-}
+};
 
 export default ProductList;
