@@ -1,64 +1,51 @@
-import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Table, Button, Spin } from "antd";
+import { Spin, Table } from "antd";
 
-type Product = {
-  id: number;
+interface Product {
+  id: string;
   name: string;
   price: number;
-};
-
-async function fetchProducts(): Promise<Product[]> {
-  const response = await fetch("http://localhost:3001/products");
-  return response.json();
 }
-
 function ProductList() {
-  const [page, setPage] = useState(1);
+  const fetchProducts = async () => {
+    const res = await fetch("http://localhost:3001/products");
+    return res.json();
+  };
+  // state data, isLoading, error
   const { data, isLoading, error } = useQuery({
-    queryKey: ["products", page],
+    queryKey: ["products"],
     queryFn: fetchProducts,
   });
-
+  console.log(data, isLoading, error);
   const columns = [
     {
       title: "ID",
       dataIndex: "id",
-      key: "id",
     },
     {
       title: "Name",
       dataIndex: "name",
-      key: "name",
     },
     {
       title: "Price",
       dataIndex: "price",
-      key: "price",
-      render: (price: number) => `$${price}`,
+    },
+    {
+      title: "Image",
+      dataIndex: "image",
+    },
+    {
+      title: "Description",
     },
   ];
-
   return (
     <div>
       {isLoading && <Spin />}
       {error && <p>Error: {error.message}</p>}
-      {!isLoading && !error && (
-        <>
-          <Table
-            dataSource={data}
-            columns={columns}
-            rowKey="id"
-            pagination={false}
-          />
-          <Button
-            onClick={() => setPage((prev) => prev + 1)}
-            style={{ marginTop: "16px" }}
-          >
-            Load More
-          </Button>
-        </>
-      )}
+      {/* {data?.map((item: Product) => (
+        <p key={item.id}>{item.name}</p>
+      ))} */}
+      <Table dataSource={data} columns={columns} rowKey={"id"} />
     </div>
   );
 }

@@ -1,16 +1,8 @@
-import { Button } from "antd";
 import ProductList from "./components/ProductList";
+import "./App.css";
 
 function App() {
-  return (
-    <div style={{ padding: "20px" }}>
-      <h1>Product Management</h1>
-      <Button type="primary" style={{ marginBottom: "16px" }}>
-        Add Product
-      </Button>
-      <ProductList />
-    </div>
-  );
+  return <ProductList />;
 }
 
 export default App;
