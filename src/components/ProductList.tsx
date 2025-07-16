@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Spin, Table } from "antd";
+import { Image, Spin, Table } from "antd";
 
 interface Product {
   id: string;
@@ -29,10 +29,14 @@ function ProductList() {
     {
       title: "Price",
       dataIndex: "price",
+      sorter: (a: Product, b: Product) => a.price - b.price,
     },
     {
       title: "Image",
       dataIndex: "image",
+      render: (src: string, recourd: Product, index: number) => {
+        return <Image src={src} width={300} alt={recourd.name} />;
+      },
     },
     {
       title: "Description",
@@ -40,12 +44,18 @@ function ProductList() {
   ];
   return (
     <div>
-      {isLoading && <Spin />}
+      {/* {isLoading && <Spin />} */}
       {error && <p>Error: {error.message}</p>}
       {/* {data?.map((item: Product) => (
         <p key={item.id}>{item.name}</p>
       ))} */}
-      <Table dataSource={data} columns={columns} rowKey={"id"} />
+      <Table
+        dataSource={data}
+        columns={columns}
+        rowKey={"id"}
+        loading={isLoading} // Hiển thị spinner khi đang tải
+        pagination={{ pageSize: 5 }} // Phân trang, mỗi trang 5 bản ghi
+      />
     </div>
   );
 }
