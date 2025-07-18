@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Image, Spin, Table } from "antd";
+import HeaderNav from "./HeaderNav";
 
 interface Product {
   id: string;
@@ -44,6 +45,7 @@ function ProductList() {
   ];
   return (
     <div>
+      <HeaderNav />
       {/* {isLoading && <Spin />} */}
       {error && <p>Error: {error.message}</p>}
       {/* {data?.map((item: Product) => (

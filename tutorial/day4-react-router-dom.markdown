@@ -22,7 +22,7 @@ pnpm add react-router-dom
 Trong phiên bản mới nhất của `react-router-dom` (tính đến năm 2025, phiên bản 6.x), cách tiếp cận sử dụng `createBrowserRouter` và `RouterProvider` được khuyến nghị thay cho `<BrowserRouter>` và `<Routes>`. Dưới đây là cấu trúc cơ bản:
 
 ```jsx
-import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -50,13 +50,6 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
-      <nav>
-        <Link to="/">Trang chủ</Link> |
-        <Link to="/products">Danh sách sản phẩm</Link> |
-        <Link to="/users">Danh sách người dùng</Link> |
-        <Link to="/categories">Danh sách danh mục</Link> |
-        <Link to="/brands">Danh sách thương hiệu</Link>
-      </nav>
       <RouterProvider router={router} />
     </div>
   );
