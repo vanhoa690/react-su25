@@ -195,9 +195,6 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
-      <nav>
-        <Link to="/">Trang chủ</Link> |<Link to="/dashboard">Dashboard</Link>
-      </nav>
       <RouterProvider router={router} />
     </div>
   );
