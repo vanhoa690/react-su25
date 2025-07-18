@@ -262,12 +262,6 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
-      <nav>
-        <Link to="/">Trang chủ</Link> |<Link to="/products">Sản phẩm</Link> |
-        <Link to="/categories">Danh mục</Link> |
-        <Link to="/brands">Thương hiệu</Link> |
-        <Link to="/dashboard">Dashboard</Link>
-      </nav>
       <RouterProvider router={router} />
     </div>
   );
