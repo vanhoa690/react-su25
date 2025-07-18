@@ -17,6 +17,18 @@ function App() {
       path: "/categories",
       element: <CategoryList />,
     },
+    {
+      path: "/orders",
+      element: <CategoryList />,
+    },
+    {
+      path: "/users",
+      element: <CategoryList />,
+    },
+    {
+      path: "/brands",
+      element: <CategoryList />,
+    },
   ]);
   return (
     <div>
