@@ -2,6 +2,7 @@ import ProductList from "./components/ProductList";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CategoryList from "./components/CategoryList";
+import ProductDetail from "./components/ProductDetail";
 
 function App() {
   const router = createBrowserRouter([
@@ -12,6 +13,10 @@ function App() {
     {
       path: "/products",
       element: <ProductList />,
+    },
+    {
+      path: "/product/detail/:productId",
+      element: <ProductDetail />,
     },
     {
       path: "/categories",

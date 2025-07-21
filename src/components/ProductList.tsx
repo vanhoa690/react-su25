@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Image, Spin, Table } from "antd";
 import Header from "./Header";
+import { Link, useSearchParams } from "react-router-dom";
 
 interface Product {
   id: string;
@@ -8,8 +9,15 @@ interface Product {
   price: number;
 }
 function ProductList() {
+  // query page, name
+  const [searchParams] = useSearchParams();
+
+  const name = searchParams.get("name");
+
   const fetchProducts = async () => {
-    const res = await fetch("http://localhost:3001/products");
+    const res = await fetch(
+      `http://localhost:3001/products?name_like=${name || ""}`
+    );
     return res.json();
   };
   // state data, isLoading, error
@@ -17,11 +25,13 @@ function ProductList() {
     queryKey: ["products"],
     queryFn: fetchProducts,
   });
-  console.log(data, isLoading, error);
   const columns = [
     {
       title: "ID",
       dataIndex: "id",
+      render: (id: number) => {
+        return <Link to={`/product/detail/${id}`}>ID: {id}</Link>; // Tạo liên kết đến chi tiết sản phẩm
+      },
     },
     {
       title: "Name",
