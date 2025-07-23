@@ -32,5 +32,61 @@
       "id": 3,
       "name": "Laptops"
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "thuan",
+      "email": "user1@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 2,
+      "name": "User 2",
+      "email": "user2@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 3,
+      "name": "User 3",
+      "email": "user3@example.com",
+      "IsActive": false
+    },
+    {
+      "id": 4,
+      "name": "User 4",
+      "email": "user4@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 5,
+      "name": "User 5",
+      "email": "user5@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 6,
+      "name": "User 6",
+      "email": "user6@example.com",
+      "IsActive": false
+    },
+    {
+      "id": 7,
+      "name": "User 7",
+      "email": "user7@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 8,
+      "name": "User 8",
+      "email": "user8@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 9,
+      "name": "User 9",
+      "email": "user9@example.com",
+      "IsActive": false
+    }
   ]
 }
