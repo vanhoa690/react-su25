@@ -17,6 +17,42 @@
       "name": "Xiaomi Mi 14",
       "price": 599,
       "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
+    },
+    {
+      "name": "ten san pham",
+      "price": 6,
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "id": 4
+    },
+    {
+      "name": "ten san pham 2",
+      "price": 5,
+      "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+      "id": 5
+    },
+    {
+      "name": "34444",
+      "price": 3444,
+      "image": "4",
+      "id": 6
+    },
+    {
+      "name": "223123",
+      "price": 123,
+      "image": "3213",
+      "id": 7
+    },
+    {
+      "name": "33333",
+      "price": 333,
+      "image": "33",
+      "id": 8
+    },
+    {
+      "name": "3333333",
+      "price": 3333,
+      "image": "333",
+      "id": 9
     }
   ],
   "categories": [
@@ -31,6 +67,62 @@
     {
       "id": 3,
       "name": "Laptops"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "thuan",
+      "email": "user1@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 2,
+      "name": "User 2",
+      "email": "user2@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 3,
+      "name": "User 3",
+      "email": "user3@example.com",
+      "IsActive": false
+    },
+    {
+      "id": 4,
+      "name": "User 4",
+      "email": "user4@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 5,
+      "name": "User 5",
+      "email": "user5@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 6,
+      "name": "User 6",
+      "email": "user6@example.com",
+      "IsActive": false
+    },
+    {
+      "id": 7,
+      "name": "User 7",
+      "email": "user7@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 8,
+      "name": "User 8",
+      "email": "user8@example.com",
+      "IsActive": true
+    },
+    {
+      "id": 9,
+      "name": "User 9",
+      "email": "user9@example.com",
+      "IsActive": false
     }
   ]
 }

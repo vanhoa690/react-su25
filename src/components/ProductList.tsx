@@ -1,41 +1,39 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Table, Button, Alert } from "antd";
-import axios from "axios";
+import { Image, Spin, Table } from "antd";
+import Header from "./Header";
+import { Link, useSearchParams } from "react-router-dom";
 
 // Định nghĩa interface cho sản phẩm
 interface Product {
   id: number;
   name: string;
   price: number;
-  description: string;
 }
+function ProductList() {
+  // query page, name
+  const [searchParams] = useSearchParams();
 
-// Hàm gọi API để lấy danh sách sản phẩm
-const fetchProducts = async (): Promise<Product[]> => {
-  const { data } = await axios.get("http://localhost:3001/products");
-  return data;
-};
+  const name = searchParams.get("name");
 
-const ProductList: React.FC = () => {
-  // Sử dụng useQuery để lấy dữ liệu
-  const {
-    data: products,
-    isLoading,
-    error,
-    refetch,
-  } = useQuery({
-    queryKey: ["products"], // Khóa duy nhất cho truy vấn
-    queryFn: fetchProducts, // Hàm lấy dữ liệu
+  const fetchProducts = async () => {
+    const res = await fetch(
+      `http://localhost:3001/products?name_like=${name || ""}`
+    );
+    return res.json();
+  };
+  // state data, isLoading, error
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
   });
-
-  // Cấu hình cột cho bảng AntD
   const columns = [
     {
       title: "ID",
       dataIndex: "id",
-      key: "id",
-      // sorter: (a: Product, b: Product) => a.id - b.id, // Sắp xếp theo ID
+      render: (id: number) => {
+        return <Link to={`/product/detail/${id}`}>ID: {id}</Link>; // Tạo liên kết đến chi tiết sản phẩm
+      },
     },
     {
       title: "Tên sản phẩm",
@@ -88,6 +86,6 @@ const ProductList: React.FC = () => {
       />
     </div>
   );
-};
+}
 
 export default ProductList;

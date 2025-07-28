@@ -1,1 +1,5 @@
-@import "antd/dist/reset.css";
+@import "tailwindcss";
+form {
+  max-width: 800px;
+  margin: 20px;
+}
