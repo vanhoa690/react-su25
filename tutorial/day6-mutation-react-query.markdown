@@ -87,7 +87,7 @@ import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Input, Button, message } from "antd";
 import axios from "axios";
-
+import { useParams } from "react-router-dom";
 // Định nghĩa interface cho sản phẩm
 interface ProductForm {
   name: string;
@@ -100,15 +100,6 @@ interface FormValues {
   price: string; // Input trả về string, sẽ chuyển sang number khi gửi API
 }
 
-// Hàm gọi API để cập nhật sản phẩm
-const updateProduct = async (id: string | number, values: ProductForm) => {
-  const response = await axios.put(
-    `http://localhost:3001/products/${id}`,
-    product
-  );
-  return response.data;
-};
-
 interface ProductEditFormProps {
   productId: number;
 }
@@ -116,6 +107,30 @@ interface ProductEditFormProps {
 const ProductEditForm: React.FC<ProductEditFormProps> = ({ productId }) => {
   const queryClient = useQueryClient();
   const [form] = Form.useForm();
+  const { id } = useParams();
+
+  const fetchProduct = async (id: number | string): Promise<Product> => {
+    const response = await axios.get(`http://localhost:3001/products/${id}`);
+    return response.data;
+  };
+
+  useEffect(() => {
+    if (data) {
+      form.setFieldsValue({
+        name: data.name,
+        price: Number(data.price),
+      });
+    }
+  }, [data, form]);
+
+  // Hàm gọi API để cập nhật sản phẩm
+  const updateProduct = async (id: string | number, values: ProductForm) => {
+    const response = await axios.put(
+      `http://localhost:3001/products/${id}`,
+      product
+    );
+    return response.data;
+  };
 
   // Sử dụng useMutation với TypeScript
   const mutation = useMutation<Product, Error, Product>({

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Image, Spin, Table } from "antd";
+import { Table } from "antd";
 import Header from "./Header";
 import { Link, useSearchParams } from "react-router-dom";
 

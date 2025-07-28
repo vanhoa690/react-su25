@@ -6,6 +6,8 @@ import ProductDetail from "./components/ProductDetail";
 import UserList from "./components/UserList";
 import ProductCreate from "./components/ProductCreate";
 import "@ant-design/v5-patch-for-react-19";
+import ProductEdit from "./components/ProductEdit";
+import { App as AntdApp } from "antd";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,6 +28,10 @@ function App() {
       element: <ProductDetail />,
     },
     {
+      path: "/product/edit/:id",
+      element: <ProductEdit />,
+    },
+    {
       path: "/categories",
       element: <CategoryList />,
     },
@@ -43,9 +49,9 @@ function App() {
     },
   ]);
   return (
-    <div>
+    <AntdApp>
       <RouterProvider router={router} />
-    </div>
+    </AntdApp>
   );
 }
 

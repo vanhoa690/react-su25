@@ -1,8 +1,7 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Image, Spin, Table } from "antd";
-import Header from "./Header";
+import { Alert, Button, Table } from "antd";
 import { Link, useSearchParams } from "react-router-dom";
+import Header from "./Header";
 
 // Định nghĩa interface cho sản phẩm
 interface Product {
@@ -23,7 +22,12 @@ function ProductList() {
     return res.json();
   };
   // state data, isLoading, error
-  const { data, isLoading, error } = useQuery({
+  const {
+    data: products,
+    isLoading,
+    error,
+    refetch,
+  } = useQuery({
     queryKey: ["products"],
     queryFn: fetchProducts,
   });
@@ -32,7 +36,7 @@ function ProductList() {
       title: "ID",
       dataIndex: "id",
       render: (id: number) => {
-        return <Link to={`/product/detail/${id}`}>ID: {id}</Link>; // Tạo liên kết đến chi tiết sản phẩm
+        return <Link to={`/product/edit/${id}`}>Edit ID: {id}</Link>; // Tạo liên kết đến chi tiết sản phẩm
       },
     },
     {
@@ -68,6 +72,7 @@ function ProductList() {
 
   return (
     <div>
+      <Header />
       <h2>Danh sách sản phẩm</h2>
       <Button
         type="primary"
