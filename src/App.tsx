@@ -6,7 +6,6 @@ import ProductDetail from "./components/ProductDetail";
 import UserList from "./components/UserList";
 import ProductCreate from "./components/ProductCreate";
 import "@ant-design/v5-patch-for-react-19";
-import ProductEdit from "./components/ProductUpdate.tsx";
 import RegisterPage from "./components/Register";
 import LoginPage from "./components/Login";
 import Homepage from "./components/Homepage";

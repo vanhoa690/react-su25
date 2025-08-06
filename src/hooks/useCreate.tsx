@@ -6,11 +6,12 @@ import { useNavigate } from "react-router-dom";
 export const useCreate = (resource: string) => {
   const nav = useNavigate();
   const addProduct = async (values: any) => {
-    return await axios.post(`http://localhost:3001/${resource}`, values);
+    const res = await axios.post(`http://localhost:3001/${resource}`, values);
+    return res.data;
   };
 
   const createMutation = useMutation({
-    mutationFn: (values: any) => addProduct(values),
+    mutationFn: addProduct,
     onSuccess: () => {
       message.success("Thanh cong");
       nav(`/${resource}`);

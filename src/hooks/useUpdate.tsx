@@ -3,15 +3,19 @@ import { message } from "antd";
 import axios from "axios";
 
 export const useUpdate = (id?: string | number) => {
-  const addProduct = async (values: any) => {
+  const updateProduct = async (values: any) => {
     if (!id) return;
-    return await axios.put(`http://localhost:3001/products/${id}`, values);
+    const res = await axios.put(`http://localhost:3001/products/${id}`, values);
+    return res.data;
   };
 
   const updateMutaion = useMutation({
-    mutationFn: (values: any) => addProduct(values),
+    mutationFn: updateProduct,
     onSuccess: () => {
       message.success("Thanh cong");
+    },
+    onError: () => {
+      message.error("That bai");
     },
   });
 

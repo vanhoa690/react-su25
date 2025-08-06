@@ -9,7 +9,7 @@ export const useAuth = (resource: string) => {
   };
 
   const authMutation = useMutation({
-    mutationFn: (values: any) => authUser(values),
+    mutationFn: authUser,
     onSuccess: (data) => {
       message.success("Thanh cong");
       localStorage.setItem("token", data.accessToken);
