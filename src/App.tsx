@@ -6,10 +6,11 @@ import ProductDetail from "./components/ProductDetail";
 import UserList from "./components/UserList";
 import ProductCreate from "./components/ProductCreate";
 import "@ant-design/v5-patch-for-react-19";
-import ProductEdit from "./components/ProductEdit";
+import ProductEdit from "./components/ProductUpdate.tsx";
 import RegisterPage from "./components/Register";
 import LoginPage from "./components/Login";
 import Homepage from "./components/Homepage";
+import ProductUpdate from "./components/ProductUpdate.tsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -38,8 +39,8 @@ function App() {
       element: <ProductDetail />,
     },
     {
-      path: "/product/edit/:id",
-      element: <ProductEdit />,
+      path: "/product/update/:id",
+      element: <ProductUpdate />,
     },
     {
       path: "/categories",

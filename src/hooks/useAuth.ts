@@ -14,6 +14,9 @@ export const useAuth = (resource: string) => {
       message.success("Thanh cong");
       localStorage.setItem("token", data.accessToken);
     },
+    onError: () => {
+      message.error("That bai");
+    },
   });
 
   return authMutation;

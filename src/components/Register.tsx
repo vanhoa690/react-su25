@@ -24,7 +24,7 @@ function RegisterPage() {
           name="password"
           rules={[{ required: true }, { min: 6 }]}
         >
-          <Input />
+          <Input.Password />
         </Form.Item>
         <Button type="primary" htmlType="submit">
           Submit

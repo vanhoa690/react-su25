@@ -1,12 +1,6 @@
 {
   "products": [
     {
-      "name": "iPhone 2223222w",
-      "price": 9993333,
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "id": 1
-    },
-    {
       "id": 2,
       "name": "Samsung Galaxy S24",
       "price": 899,
@@ -19,16 +13,28 @@
       "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630"
     },
     {
-      "name": "ten san pham",
-      "price": 6,
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      "id": 4
+      "name": "qweqwe",
+      "price": 22222,
+      "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
+      "id": 5
     },
     {
-      "name": "ten san pham 2",
-      "price": 5,
-      "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
-      "id": 5
+      "name": "hoadv",
+      "price": 22222,
+      "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
+      "id": 6
+    },
+    {
+      "name": "hoadv",
+      "price": 3333,
+      "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
+      "id": 7
+    },
+    {
+      "name": "hoadv",
+      "price": 13333,
+      "image": "https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630",
+      "id": 8
     }
   ],
   "categories": [
