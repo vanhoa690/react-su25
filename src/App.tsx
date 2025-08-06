@@ -7,13 +7,23 @@ import UserList from "./components/UserList";
 import ProductCreate from "./components/ProductCreate";
 import "@ant-design/v5-patch-for-react-19";
 import ProductEdit from "./components/ProductEdit";
-import { App as AntdApp } from "antd";
+import RegisterPage from "./components/Register";
+import LoginPage from "./components/Login";
+import Homepage from "./components/Homepage";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <ProductList />,
+      element: <Homepage />,
+    },
+    {
+      path: "/register",
+      element: <RegisterPage />,
+    },
+    {
+      path: "/login",
+      element: <LoginPage />,
     },
     {
       path: "/products",

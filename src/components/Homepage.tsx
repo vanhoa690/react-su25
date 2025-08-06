@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import Header from "./Header";
 
 function Homepage() {
+  useEffect(() => {
+    const timer = setInterval(() => console.log("Tick"), 1000);
+    return () => clearInterval(timer);
+  }, []);
   return (
     <div>
       <Header />

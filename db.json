@@ -45,5 +45,11 @@
       "name": "Laptops"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "hoadv21@fpt.edu.vn",
+      "password": "$2a$10$wj6KQYyH5Y6y8UZkOrMna.PUiEzX2xrZe40NQNv3Ya9Kiyu.2ZvI6",
+      "id": 1
+    }
+  ]
 }

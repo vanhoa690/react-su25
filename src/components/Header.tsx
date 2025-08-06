@@ -28,6 +28,16 @@ const items: MenuItem[] = [
     icon: <ShopFilled />,
   },
   {
+    label: "Register",
+    key: "/register",
+    icon: <UserOutlined />,
+  },
+  {
+    label: "Login",
+    key: "/login",
+    icon: <UserOutlined />,
+  },
+  {
     label: "Users",
     key: "/users",
     icon: <UserOutlined />,
