@@ -10,6 +10,8 @@ import RegisterPage from "./components/Register";
 import LoginPage from "./components/Login";
 import Homepage from "./components/Homepage";
 import ProductUpdate from "./components/ProductUpdate.tsx";
+import PrivateRoute from "./components/PrivateRoute.tsx";
+import type { Children } from "react";
 
 function App() {
   const router = createBrowserRouter([
@@ -30,8 +32,14 @@ function App() {
       element: <ProductList />,
     },
     {
-      path: "/products/create",
-      element: <ProductCreate />,
+      path: "/products",
+      element: <PrivateRoute />,
+      children: [
+        {
+          path: "create",
+          element: <ProductCreate />,
+        },
+      ],
     },
     {
       path: "/product/detail/:productId",

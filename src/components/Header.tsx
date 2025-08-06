@@ -6,8 +6,8 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Button, Menu } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -27,16 +27,7 @@ const items: MenuItem[] = [
     key: "/products/create",
     icon: <ShopFilled />,
   },
-  {
-    label: "Register",
-    key: "/register",
-    icon: <UserOutlined />,
-  },
-  {
-    label: "Login",
-    key: "/login",
-    icon: <UserOutlined />,
-  },
+
   {
     label: "Users",
     key: "/users",
@@ -52,6 +43,13 @@ const items: MenuItem[] = [
 const Header: React.FC = () => {
   const [current, setCurrent] = useState("home");
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "/login";
+  };
 
   const onClick: MenuProps["onClick"] = (e: any) => {
     setCurrent(e.key);
@@ -59,12 +57,28 @@ const Header: React.FC = () => {
   };
 
   return (
-    <Menu
-      onClick={onClick}
-      selectedKeys={[current]}
-      mode="horizontal"
-      items={items}
-    />
+    <div>
+      <Menu
+        onClick={onClick}
+        selectedKeys={[current]}
+        mode="horizontal"
+        items={items}
+      />
+      <div>
+        {token ? (
+          <Button onClick={handleLogout}>Đăng xuất</Button>
+        ) : (
+          <>
+            <Link to="/login" style={{ marginRight: 10 }}>
+              <Button>Đăng nhập</Button>
+            </Link>
+            <Link to="/register">
+              <Button>Đăng ký</Button>
+            </Link>
+          </>
+        )}
+      </div>
+    </div>
   );
 };
 
