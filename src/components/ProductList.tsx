@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Alert, Button, Table } from "antd";
+import { Alert, Button, Image, Table } from "antd";
 import { Link, useSearchParams } from "react-router-dom";
 import Header from "./Header";
 
@@ -53,8 +53,9 @@ function ProductList() {
     },
     {
       title: "Mô tả",
-      dataIndex: "description",
-      key: "description",
+      dataIndex: "image",
+      key: "image",
+      render: (src: string) => <Image src={src} alt="image" width={100} />,
     },
   ];
 
@@ -73,7 +74,7 @@ function ProductList() {
   return (
     <div>
       <Header />
-      <h2>Danh sách sản phẩm</h2>
+      <h2 className="text-2xl my-4">Danh sách sản phẩm</h2>
       <Button
         type="primary"
         onClick={() => refetch()}

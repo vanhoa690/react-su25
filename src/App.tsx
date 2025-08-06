@@ -49,9 +49,9 @@ function App() {
     },
   ]);
   return (
-    <AntdApp>
+    <div className="max-w-[1200px] mx-auto">
       <RouterProvider router={router} />
-    </AntdApp>
+    </div>
   );
 }
 
